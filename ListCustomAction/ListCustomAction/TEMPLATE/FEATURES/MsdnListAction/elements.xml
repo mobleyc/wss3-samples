@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <CustomAction
+    Id="DynamicCustomAction"
+    RegistrationType="List"
+    RegistrationId="100"
+    Location="EditControlBlock"
+    Sequence="105"
+    Title="Go to MSDN"
+    Description="A custom menu item"
+    ImageUrl="_layouts/images/gortl.gif" >
+    <UrlAction Url="http://msdn.microsoft.com/"/>
+  </CustomAction>
+</Elements>
