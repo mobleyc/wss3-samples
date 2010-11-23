@@ -32,19 +32,23 @@ namespace DynamicList
                 var guid = web.Lists.Add(listName, listName, SPListTemplateType.GenericList);
                 Console.WriteLine("List added");
 
+
                 var dynamicList = web.Lists[guid];
                 dynamicList.Fields.Add("Value", SPFieldType.Text, true);
                 dynamicList.Update();
 
                 Console.WriteLine("Value field added");
 
+
+                var allItemsView = dynamicList.Views["All Items"];
                 var viewFields = new StringCollection
                 {
                     "Title",
                     "Value"
                 };
-                string query = "<Where><Gt><FieldRef Name='ID' /><Value Type='Counter'>0</Value></Gt></Where>";
-                dynamicList.Views.Add("Custom View", viewFields, query, 100, false, false);
+                
+                dynamicList.Views.Add("Custom View", viewFields, allItemsView.Query,
+                    allItemsView.RowLimit, allItemsView.Paged, false);
 
                 Console.WriteLine("Custom view added");
             }
